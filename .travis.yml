@@ -1,0 +1,6 @@
+install: cd HelloWorld && mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true
+language: java
+
+jdk:
+  - oraclejdk8
+  
