@@ -45,7 +45,7 @@ public class UserRepositoryTest {
         // 测试删除姓名为AAA的User
         userRepository.delete(userRepository.findByName("AAA"));
 
-        
+
         // 测试findAll, 查询所有记录, 验证上面的删除是否成功
         assertEquals(9, userRepository.findAll().size());
 
