@@ -9,5 +9,4 @@ after_success:
 
 notifications:
   email:
-    recipients:
-      - panyuyuyu@outlook.com
+    - panyuyuyu@outlook.com
