@@ -9,8 +9,3 @@ after_success:
 
 notifications:
   email:
-<<<<<<< HEAD
-    - panyuyuyu@outlook.com8817-4367-b41f-086cf01fb510
-=======
-    - panyuyuyu@outlook.com
->>>>>>> origin/master
