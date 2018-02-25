@@ -37,7 +37,9 @@ public class UserControllerTest {
         request = get("/users/");
         mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("[]")));
+                .andExpect(content().string(equalTo("[{\"id\":2,\"name\":\"测试大师\",\"age\":20}," +
+                        "{\"id\":3,\"name\":\"测试大师\",\"age\":20},{\"id\":4,\"name\":\"测试大师\",\"age\":20}," +
+                        "{\"id\":5,\"name\":\"测试大师\",\"age\":20}]")));
 
     }
 
@@ -51,12 +53,48 @@ public class UserControllerTest {
                 .param("age", "20");
         mvc.perform(request)
                 .andExpect(content().string(equalTo("\"Success\"")));
+        request = post("/users/")
+                .param("id", "2")
+                .param("name", "测试大师")
+                .param("age", "20");
+        mvc.perform(request)
+                .andExpect(content().string(equalTo("\"Success\"")));
+        request = post("/users/")
+                .param("id", "3")
+                .param("name", "测试大师")
+                .param("age", "20");
+        mvc.perform(request)
+                .andExpect(content().string(equalTo("\"Success\"")));
+        request = post("/users/")
+                .param("id", "4")
+                .param("name", "测试大师")
+                .param("age", "20");
+        mvc.perform(request)
+                .andExpect(content().string(equalTo("\"Success\"")));
+        request = post("/users/")
+                .param("id", "5")
+                .param("name", "测试大师")
+                .param("age", "20");
+        mvc.perform(request)
+                .andExpect(content().string(equalTo("\"Success\"")));
+
     }
 
     @Test
     public void getUser() throws Exception{
         RequestBuilder request = null;
         request = get("/users/");
+        request = get("/users/");
+        request = post("/users/")
+                .param("id", "1")
+                .param("name", "测试大师")
+                .param("age", "20");
+        mvc.perform(request);
+
+        request = post("/users/")
+                .param("id", "1")
+                .param("name", "测试大师")
+                .param("age", "20");
         request = get("/users/");
         mvc.perform(request)
                 .andExpect(status().isOk())
@@ -66,8 +104,13 @@ public class UserControllerTest {
 
     @Test
     public void putUser() throws Exception{
-        RequestBuilder request = null;
+        RequestBuilder request = get("/users/");
         request = get("/users/");
+        request = post("/users/")
+                .param("id", "1")
+                .param("name", "测试大师")
+                .param("age", "20");
+        mvc.perform(request);
         request = put("/users/1")
                 .param("name", "测试终极大师")
                 .param("age", "30");
@@ -79,6 +122,12 @@ public class UserControllerTest {
     @Test
     public void deleteUser() throws Exception{
         RequestBuilder request = null;
+        request = get("/users/");
+        request = post("/users/")
+                .param("id", "1")
+                .param("name", "测试大师")
+                .param("age", "20");
+        mvc.perform(request);
         request = get("/users/");
         request = delete("/users/1");
         mvc.perform(request)
